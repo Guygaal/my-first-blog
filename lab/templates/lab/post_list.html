@@ -1,0 +1,13 @@
+{% extends 'lab/base.html' %}
+
+{% block content %}
+{% for post in posts %}
+                <div class="post">
+                <div class="date">
+                    <p><b>Дата публикации:</b> {{ post.published_date }}</p>
+                </div>
+            <h1><a href="{% url 'post_detail' pk=post.pk %}"><b>Название партии:</b> {{ post.title }}</a></h1>
+            <p><b>Описание партии:</b>  {{ post.text|linebreaksbr }}</p>
+                </div>
+            {% endfor %}
+        {% endblock %}

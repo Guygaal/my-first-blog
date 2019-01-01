@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+{% extends 'lab/base.html' %}
+{% block content %}
+{% if post.published_date %}
+     <div class="post">
+                <div class="date">
+                    <p><b>Дата публикации:</b> {{ post.published_date }}</p>
+                </div>
+            <h1><a href="{% url 'post_detail' pk=post.pk %}"><b>Название партии:</b> {{ post.title }}</a></h1>
+            <p><b>Описание партии:</b>  {{ post.text|linebreaksbr }}</p>
+             <p><b><u>Микроскоп</u></b></p>
+            <p><b>U =   </b>{{ post.microscope|linebreaksbr }}</p>
+                </div>
+{% endif %}
+{% if user.is_authenticated %}
+<a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+{% endif %}
+{% endblock %}
+
+</body>
+</html>
